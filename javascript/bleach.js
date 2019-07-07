@@ -12,8 +12,8 @@ var spiritsName = [
         firstName: "Ichigo",
         lastName: "Kurosaki",
         health: 150,
-        baseAttack: 15,
-        counter: 35 ,
+        AttackStrength: 15,
+        counterAttackPower: 35 ,
         defense: 30 ,
         attackName: "Getsuga Tensho",
         playerSelected: false  ,
@@ -24,8 +24,8 @@ var spiritsName = [
         firstName: "Toshiro",
         lastName: "Hitsugaya",
         health: 150,
-        baseAttack: 15,
-        counter: 35 ,
+        AttackStrength: 15,
+        counterAttackPower: 35 ,
         defense: 50 ,
         attackName: "Ryusenka",
         playerSelected: false ,
@@ -36,8 +36,8 @@ var spiritsName = [
         firstName: "Aizen",
         lastName: "Sosuke",
         health: 150,
-        baseAttack: 15,
-        counter: 35 ,
+        AttackStrength: 15,
+        counterAttackPower: 35 ,
         defense: 50 ,
         attackName: "Hado #99",
         playerSelected: false ,
@@ -48,8 +48,8 @@ var spiritsName = [
         firstName: "Byakuya",
         lastName: "Kuchiki",
         health: 150,
-        baseAttack: 15,
-        counter: 35 ,
+        attackStrength: 15,
+        counterAttackPower: 35 ,
         defense: 50 ,
         attackName: "Senkei Senbonzakura Kageoyshi",
         playerSelected : false ,
@@ -70,52 +70,8 @@ $(document).ready(function(){
         $("#"+objectPos.firstName).append(objectPos.image);
         $("#"+objectPos.firstName).append("<span> <br>" + objectPos.firstName + "</span>" + "<br>" + "<span class="+objectPos.firstName + "Health>" + "HP: " + objectPos.health + "</span>");
     }
-    // when charcters selected move them to different div
-    
-        $(".Ichigo").on("click", function(){
-            if (playerSelected === false) {
-            playerSelected = true;
-            $(".Ichigo").appendTo(".Attacker")
-            $(".Toshiro").appendTo(".Enemies")
-            $(".Aizen").appendTo(".Enemies")
-            $(".Byakuya").appendTo(".Enemies")
 
-        }}
-        )
-
-        $(".Toshiro").on("click", function(){
-            if (playerSelected === false) {
-            playerSelected = true;
-            $(".Ichigo").appendTo(".Enemies")
-            $(".Toshiro").appendTo(".Attacker")
-            $(".Aizen").appendTo(".Enemies")
-            $(".Byakuya").appendTo(".Enemies")
-        }}
-        )
-    
-        $(".Aizen").on("click", function(){
-            if (playerSelected === false) {
-            playerSelected = true;
-            $(".Ichigo").appendTo(".Enemies")
-            $(".Toshiro").appendTo(".Enemies")
-            $(".Aizen").appendTo(".Attacker")
-            $(".Byakuya").appendTo(".Enemies")
-        }}
-        )
-
-        $(".Byakuya").on("click", function(){
-             if (playerSelected === false) {
-            playerSelected = true;
-            $(".Ichigo").appendTo(".Enemies")
-            $(".Toshiro").appendTo(".Enemies")
-            $(".Aizen").appendTo(".Enemies")
-            $(".Byakuya").appendTo(".Attacker")
-        }}
-        )
-    
-
-    // Defender Selection
-    
+        // Defender Selection
         $(".Ichigo").on("click", function(){
             if ( playerSelected === true && defenderSelected === false) {
             defenderSelected = true;
@@ -142,5 +98,56 @@ $(document).ready(function(){
             $(".Byakuya").appendTo(".Defender")
         }}
         )
+    
+    // when charcters selected move them to different div
+    
+        $(".Ichigo").on("click", function(){
+            if (playerSelected === false & defenderSelected === false) {
+            playerSelected = true;
+            $(".Ichigo").appendTo(".Attacker")
+            $(".Toshiro").appendTo(".Enemies")
+            $(".Aizen").appendTo(".Enemies")
+            $(".Byakuya").appendTo(".Enemies")
+
+        }}
+        )
+
+        $(".Toshiro").on("click", function(){
+            if (playerSelected === false && defenderSelected === false) {
+            playerSelected = true;
+            $(".Ichigo").appendTo(".Enemies")
+            $(".Toshiro").appendTo(".Attacker")
+            $(".Aizen").appendTo(".Enemies")
+            $(".Byakuya").appendTo(".Enemies")
+        }}
+        )
+    
+        $(".Aizen").on("click", function(){
+            if (playerSelected === false && defenderSelected === false) {
+            playerSelected = true;
+            $(".Ichigo").appendTo(".Enemies")
+            $(".Toshiro").appendTo(".Enemies")
+            $(".Aizen").appendTo(".Attacker")
+            $(".Byakuya").appendTo(".Enemies")
+        }}
+        )
+
+        $(".Byakuya").on("click", function(){
+             if (playerSelected === false && defenderSelected === false) {
+            playerSelected = true;
+            $(".Ichigo").appendTo(".Enemies")
+            $(".Toshiro").appendTo(".Enemies")
+            $(".Aizen").appendTo(".Enemies")
+            $(".Byakuya").appendTo(".Attacker")
+        }}
+        )
+    
+        // Increase attack strength
+        spiritsName.prototype.increaseAttack = function() {
+            this.attackStrength += baseAttack;
+        }
+        // Perform attack
+        
+
     
 });
