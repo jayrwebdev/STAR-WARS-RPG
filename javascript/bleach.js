@@ -6,6 +6,7 @@ var charArray = [];
 var playerSelected = false ;
 var defenderSelected = false;
 
+
 var spiritsName = [
     ichigoK = {
         firstName: "Ichigo",
@@ -70,9 +71,76 @@ $(document).ready(function(){
         $("#"+objectPos.firstName).append("<span> <br>" + objectPos.firstName + "</span>" + "<br>" + "<span class="+objectPos.firstName + "Health>" + "HP: " + objectPos.health + "</span>");
     }
     // when charcters selected move them to different div
-     
-    if (playerSelected == false) {
-        $(".Ichigo").append("")
-    }
+    
+        $(".Ichigo").on("click", function(){
+            if (playerSelected === false) {
+            playerSelected = true;
+            $(".Ichigo").appendTo(".Attacker")
+            $(".Toshiro").appendTo(".Enemies")
+            $(".Aizen").appendTo(".Enemies")
+            $(".Byakuya").appendTo(".Enemies")
+
+        }}
+        )
+
+        $(".Toshiro").on("click", function(){
+            if (playerSelected === false) {
+            playerSelected = true;
+            $(".Ichigo").appendTo(".Enemies")
+            $(".Toshiro").appendTo(".Attacker")
+            $(".Aizen").appendTo(".Enemies")
+            $(".Byakuya").appendTo(".Enemies")
+        }}
+        )
+    
+        $(".Aizen").on("click", function(){
+            if (playerSelected === false) {
+            playerSelected = true;
+            $(".Ichigo").appendTo(".Enemies")
+            $(".Toshiro").appendTo(".Enemies")
+            $(".Aizen").appendTo(".Attacker")
+            $(".Byakuya").appendTo(".Enemies")
+        }}
+        )
+
+        $(".Byakuya").on("click", function(){
+             if (playerSelected === false) {
+            playerSelected = true;
+            $(".Ichigo").appendTo(".Enemies")
+            $(".Toshiro").appendTo(".Enemies")
+            $(".Aizen").appendTo(".Enemies")
+            $(".Byakuya").appendTo(".Attacker")
+        }}
+        )
+    
+
+    // Defender Selection
+    
+        $(".Ichigo").on("click", function(){
+            if ( playerSelected === true && defenderSelected === false) {
+            defenderSelected = true;
+            $(".Ichigo").appendTo(".Defender")
+        }}
+        )
+   
+        $(".Toshiro").on("click", function(){
+            if ( playerSelected === true && defenderSelected === false) {
+            defenderSelected = true;
+            $(".Toshiro").appendTo(".Defender")
+        }})
+
+        $(".Aizen").on("click", function(){
+            if ( playerSelected === true && defenderSelected === false) {
+            defenderSelected = true;
+            $(".Aizen").appendTo(".Defender")
+        }}
+        )
+    
+        $(".Byakuya").on("click", function(){ 
+            if ( playerSelected === true && defenderSelected === false) {
+            defenderSelected = true;
+            $(".Byakuya").appendTo(".Defender")
+        }}
+        )
     
 });
