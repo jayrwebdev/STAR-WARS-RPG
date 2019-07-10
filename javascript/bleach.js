@@ -14,14 +14,18 @@ var DefenderAttack;
 var DefenderBaseAttack;
 var DefenderName;
 
+var attackerobj;
+var defenderobj;
+
+
 
 var spiritsName = [
     ichigoK = {
         firstName: "Ichigo",
         lastName: "Kurosaki",
         health: 150,
-        AttackStrength: 15,
-        counterAttackPower: 35,
+        attackStrength: 15,
+        counterAttackPower: 30,
         defense: 30,
         attackName: "Getsuga Tensho",
         playerSelected: false,
@@ -32,7 +36,7 @@ var spiritsName = [
         firstName: "Toshiro",
         lastName: "Hitsugaya",
         health: 150,
-        AttackStrength: 15,
+        attackStrength: 15,
         counterAttackPower: 35,
         defense: 50,
         attackName: "Ryusenka",
@@ -44,8 +48,8 @@ var spiritsName = [
         firstName: "Aizen",
         lastName: "Sosuke",
         health: 150,
-        AttackStrength: 15,
-        counterAttackPower: 35,
+        attackStrength: 15,
+        counterAttackPower: 40,
         defense: 50,
         attackName: "Hado #99",
         playerSelected: false,
@@ -86,7 +90,7 @@ $(document).ready(function () {
             DefenderAttack = spiritsName[0].attackStrength;
             DefenderHealth = spiritsName[0].health;
             DefenderBaseAttack = spiritsName[0].attackStrength + baseAttack + 5;
-            DefenderName = spiritsName[0].firstName.lastName;
+            DefenderName = spiritsName[0].firstName;
         } else {
             playerSelected = true;
             $(".Ichigo").appendTo(".Attacker")
@@ -96,7 +100,7 @@ $(document).ready(function () {
             AttackerAttack = spiritsName[0].attackStrength;
             AttackerHealth = spiritsName[0].health
             AttackerBaseAttack = spiritsName[0].attackStrength + baseAttack + 8;
-            AttackerName = spiritsName[0].firstName.lastName;
+            AttackerName = spiritsName[0].firstName;
         }
     })
 
@@ -107,7 +111,7 @@ $(document).ready(function () {
             DefenderAttack = spiritsName[1].firstName.attackStrength;
             DefenderHealth = spiritsName[1].health;
             DefenderBaseAttack = spiritsName[1].attackStrength + baseAttack + 8;
-            DefenderName = spiritsName[1].firstName.lastName;
+            DefenderName = spiritsName[1].firstName;
         } else {
             playerSelected = true;
             $(".Ichigo").appendTo(".Enemies")
@@ -117,7 +121,7 @@ $(document).ready(function () {
             AttackerAttack = spiritsName[1].attackStrength;
             AttackerHealth = spiritsName[1].health
             AttackerBaseAttack = spiritsName[1].attackStrength + baseAttack + 10;
-            AttackerName = spiritsName[1].firstName.lastName;
+            AttackerName = spiritsName[1].firstName;
         }
     })
 
@@ -128,7 +132,7 @@ $(document).ready(function () {
             DefenderAttack = spiritsName[2].attackStrength;
             DefenderHealth = spiritsName[2].health;
             DefenderBaseAttack = spiritsName[2].attackStrength + baseAttack + 10;
-            DefenderName = spiritsName[2].firstName.lastName;
+            DefenderName = spiritsName[2].firstName;
         } else {
             playerSelected = true;
             $(".Ichigo").appendTo(".Enemies")
@@ -138,7 +142,7 @@ $(document).ready(function () {
             AttackerAttack = spiritsName[2].attackStrength;
             AttackerHealth = spiritsName[2].health
             AttackerBaseAttack = spiritsName[2].attackStrength.baseAttack + 10;
-            AttackerName = spiritsName[2].firstName.lastName;
+            AttackerName = spiritsName[2].firstName;
         }
     })
 
@@ -149,7 +153,7 @@ $(document).ready(function () {
             DefenderAttack = spiritsName[3].attackStrength;
             DefenderHealth = spiritsName[3].health;
             DefenderBaseAttack = spiritsName[3].attackStrength.baseAttack + 9;
-            DefenderName = spiritsName[3].firstName.lastName;
+            DefenderName = spiritsName[3].firstName;
         } else {
             playerSelected = true;
             $(".Ichigo").appendTo(".Enemies")
@@ -159,7 +163,7 @@ $(document).ready(function () {
             AttackerAttack = spiritsName[3].attackStrength;
             AttackerHealth = spiritsName[3].health
             AttackerBaseAttack = spiritsName[3].attackStrength.baseAttack + 9;
-            AttackerName = spiritsName[3].firstName.lastName;
+            AttackerName = spiritsName[3].firstName;
         }
     })
 
@@ -169,60 +173,66 @@ $(document).ready(function () {
     // 3. Defender gets defeated
     // 4. Reset Game
 
-    function Attack() {
+    function Attack(attacker, defender) {
+
+        console.log(AttackerName, DefenderName)
+        console.log(attacker, defender)
+
         if (playerSelected === true && defenderSelected === true) {
 
-
-
-            switch (spiritsName) {
-                case "ichigo":
-                    attackerobj = spiritsname[0]
+            switch (attacker) {
+                case "Ichigo":
+                    attackerobj = spiritsName[0]
                     break;
 
-                case "byakuya":
+                case "Byakuya":
                     attackerobj = spiritsName[3]
                     break;
 
-                case "aizen":
-                    attackerObj = spiritsName[2]
+                case "Aizen":
+                    attackerobj = spiritsName[2]
                     break;
 
-                case "toshiro":
+                case "Toshiro":
                     attackerobj = spiritsName[1]
                     break;
 
             }
-                switch (spiritsName) {
-                    case "ichigo":
-                        defenderobj = spiritsName[0]
-                        break;
-                    case "byakuya":
-                        defenderobj = spiritsName[3]
-                        break ;
-                    case "aizen":
-                        defenderobj = spiritsName[2]
-                        break;
-                    case "toshiro":
-                        defenderobj = spiritsName[1]
-                        break ;
+            switch (defender) {
+                case "Ichigo":
+                    defenderobj = spiritsName[0]
+                    break;
+                case "Byakuya":
+                    var defenderobj = spiritsName[3]
+                    break;
+                case "Aizen":
+                    var defenderobj = spiritsName[2]
+                    break;
+                case "Toshiro":
+                    var defenderobj = spiritsName[1]
+                    break;
             }
-
-
-            atkvalue = attackerobj.AttackStrength
-            defvalue = defenderobj.AttackStrength
-
-            // if (attackerName) === “ichigo” {
-            // attackerObj = array[0} ;
-            // attackerObj.attackStrength
-            // defenderobj.health
+            console.log(attackerobj)
+            console.log(defenderobj)
+            atkvalue = attackerobj.attackStrength
+            defvalue = defenderobj.attackStrength
         }
 
+        defenderobj.health -= attackerobj.attackStrength
+        attackerobj.health -= defenderobj.attackStrength
 
+        defenderobj.health -= attackerobj.counterAttackPower
+        defenderobj.health -= defenderobj.counterAttackPower
+        
+        if ( defenderobj.health &&  defenderobj.health === 0 ) {
+            alert("Game Over")
+        }
+        console.log(defenderobj.health)
+        console.log(attackerobj.health)
 
-        ;
     }
-}
-        Attack(attacker, defender);
 
-$("#engaged").on("click", Attack);
+    $("#engaged").on("click", function () {
+        Attack(AttackerName, DefenderName)
+    });
 });
