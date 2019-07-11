@@ -218,14 +218,21 @@ $(document).ready(function () {
             defvalue = defenderobj.attackStrength
         }
 
-        defenderobj.health -= attackerobj.attackStrength
         attackerobj.health -= defenderobj.attackStrength
-
+        $("#defenderStatus").html(DefenderName + " " + "used" + " " + defenderobj.attackName + " " + "for" + " "+ defenderobj.attackStrength + " " + "damage")
         defenderobj.health -= attackerobj.counterAttackPower
-        defenderobj.health -= defenderobj.counterAttackPower
+        $("#attackerStatus").html(AttackerName + " " + "used" + " " + attackerobj.attackName + " " + "for" + " " + attackerobj.counterAttackPower + " " + "damage")
+        attackerobj.health -= defenderobj.counterAttackPower
+        $("#defenderStatus").html(DefenderName + " " + "used" + " " + defenderobj.attackName + " " + "for" + " " + defenderobj.counterAttackPower + " " + "damage")
+        defenderobj.health -= attackerobj.attackStrength
+        $("#attackerStatus").html(AttackerName + " " + "used" + " " + attackerobj.attackName + " " + "for" + " " + attackerobj.attackStrength + " " + "damage")
         
-        if ( defenderobj.health &&  defenderobj.health === 0 ) {
-            alert("Game Over")
+        if (defenderobj.health <= 0 ) {
+            alert("Game Over" + " " + AttackerName + " " + "wins");
+
+        }
+        if (attackerobj <= 0) {
+            alert("Game Over"+ " " + DefenderName+ " " + "wins")
         }
         console.log(defenderobj.health)
         console.log(attackerobj.health)
